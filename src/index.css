@@ -1,5 +1,4 @@
-.container {
-	display: flex;
-	max-width: 900px;
-	justify-content: center;
-}
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

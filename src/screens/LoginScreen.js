@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogin } from '../redux/user/userActions';
 
-import './LoginScreen.css';
-
 const LoginScreen = ({ history }) => {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');

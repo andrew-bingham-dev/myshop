@@ -1,16 +1,13 @@
 import React from 'react';
 
-import './Product.css';
-
 const Product = ({ title, description, price }) => {
 	return (
 		<>
-			<div className='product'>
-			<div className="product__title">{title}</div>
-			<div className="product__description">{description}</div>
-			<div className="product__price">{price}</div>
+			<div className='border-gray-300 bg-gray-100 shadow-sm w-full h-52 mt-4 p-2 rounded-md'>
+				<div className='font-bold text-xl'>{title}</div>
+				<div className=''>{description}</div>
+				<div className=''>{price}</div>
 			</div>
-
 		</>
 	);
 };
