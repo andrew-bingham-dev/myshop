@@ -1,18 +1,28 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { auth } from './apis/firebase';
+import { userLogout } from './redux/user/userActions';
 import Header from './components/Header';
 import LoginScreen from './screens/LoginScreen';
 import ProductsScreen from './screens/ProductsScreen';
+import { USER_LOGIN_SUCCESS } from './redux/user/userConstants';
+import CartScreen from './screens/CartScreen';
 
 function App() {
-	auth.onAuthStateChanged(user => {
-		if (user) {
-			console.log(`User ${user.email} is logged on`);
-		} else {
-			console.log('No user logged in');
-		}
-	});
+	const dispatch = useDispatch();
+	const userId = useSelector(state => state.user.id);
+
+	useEffect(() => {
+		auth.onAuthStateChanged(user => {
+			if (user) {
+				dispatch({ type: USER_LOGIN_SUCCESS, payload: user.uid });
+			} else {
+				dispatch(userLogout());
+			}
+		});
+	}, []);
 
 	return (
 		<>
@@ -21,6 +31,7 @@ function App() {
 				<Switch>
 					<Route path='/' exact component={ProductsScreen} />
 					<Route path='/login' component={LoginScreen} />
+					<Route path='/cart' component={CartScreen} />
 				</Switch>
 			</Router>
 		</>
