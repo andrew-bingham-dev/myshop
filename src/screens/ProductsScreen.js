@@ -8,10 +8,10 @@ const ProductsScreen = () => {
 	const [products, setProducts] = useState([]);
 
 	const getAllProductsFromFirebase = async () => {
-		const productsRef = db.collection('products');
-		const snapshot = await productsRef.get();
+		let productsRef = db.collection('products');
+		let snapshot = await productsRef.get();
 		snapshot.forEach(doc => {
-			allProducts.push(doc.data());
+			allProducts.push(doc);
 		});
 
 		setProducts(allProducts);
@@ -26,10 +26,11 @@ const ProductsScreen = () => {
 			<div className='mx-auto px-4 max-w-4xl grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
 				{products.map(product => (
 					<Product
-						key={product.name}
-						name={product.name}
-						description={product.description}
-						price={`£${product.price}`}
+						key={product.id}
+						id={product.id}
+						name={product.data().name}
+						description={product.data().description}
+						price={`£${product.data().price}`}
 					/>
 				))}
 			</div>

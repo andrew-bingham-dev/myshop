@@ -10,6 +10,7 @@ import ProductsScreen from './screens/ProductsScreen';
 import { USER_LOGIN_SUCCESS } from './redux/user/userConstants';
 import CartScreen from './screens/CartScreen';
 import SignupScreen from './screens/SignupScreen';
+import ProductScreen from './screens/ProductScreen';
 
 function App() {
 	const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
 				<Header />
 				<Switch>
 					<Route path='/' exact component={ProductsScreen} />
+					<Route path='/product/:id' component={ProductScreen} />
 					<Route path='/login' component={LoginScreen} />
 					<Route path='/signup' component={SignupScreen} />
 					<Route path='/cart' component={CartScreen} />
