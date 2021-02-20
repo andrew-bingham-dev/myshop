@@ -54,7 +54,7 @@ const LoginScreen = ({ history }) => {
 					<br />
 					<button
 						type='submit'
-						className='block mt-4 w-full bg-gray-600 text-gray-200 p-2 rounded-xl hover:bg-gray-500'
+						className='block mt-4 w-full font-medium bg-gray-600 text-gray-200 p-2 rounded-xl hover:bg-gray-500'
 					>
 						Login
 					</button>

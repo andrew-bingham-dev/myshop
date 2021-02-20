@@ -6,7 +6,20 @@ import { userLogout } from '../redux/user/userActions';
 
 const Header = () => {
 	const user = useSelector(state => state.user);
+	const cart = useSelector(state => state.cart);
 	const dispatch = useDispatch();
+
+	function itemsInCart(cart) {
+		let totalItems = 0;
+		if (cart.length > 0) {
+			cart.forEach(item => {
+				totalItems += item.qty;
+			});
+			return totalItems;
+		} else {
+			return 0;
+		}
+	}
 
 	function displayProductsOptions() {}
 
@@ -22,6 +35,7 @@ const Header = () => {
 				</Link>
 				<Link className='hover:no-underline hover:text-gray-100' to='/cart'>
 					Cart
+					{itemsInCart(cart) > 0 ? ` (${itemsInCart(cart)})` : ''}
 				</Link>
 				<button
 					onClick={() => {
@@ -41,7 +55,7 @@ const Header = () => {
 					Login
 				</Link>
 				<Link className='hover:no-underline hover:text-gray-100' to='/signup'>
-					Signup
+					Sign-up
 				</Link>
 			</>
 		);
@@ -55,7 +69,7 @@ const Header = () => {
 			<nav className='w-full bg-gray-700 text-gray-300 p-2 sticky'>
 				<div className='max-w-4xl flex justify-between items-center mx-auto px-4'>
 					<div className='text-4xl my-auto pb-2 '>
-						<Link className='hover:no-underline hover:text-gray-100' to='/'>
+						<Link className='font-bold hover:no-underline hover:text-gray-100' to='/'>
 							MyShop
 						</Link>
 					</div>
