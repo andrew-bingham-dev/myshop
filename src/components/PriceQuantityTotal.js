@@ -7,7 +7,7 @@ const PriceQuantityTotal = ({ price, qty }) => {
 		<div className='flex w-full justify-between mt-8'>
 			<div className='text-xs text-center'>
 				Unit price
-				<div className='border-2 border-gray-200 p-2 w-28 rounded-xl'>£{price}</div>
+				<div className='border-2 border-gray-200 p-2 w-28 rounded-xl'>£{price.toFixed(2)}</div>
 			</div>
 			<div className='text-xs text-center'>
 				Select quantity
@@ -34,10 +34,17 @@ const PriceQuantityTotal = ({ price, qty }) => {
 			</div>
 			<div className='text-xs text-center'>
 				Total price
-				<div className='border-2 border-gray-200 p-2 w-28 rounded-xl'>£{price * quantity}</div>
+				<div className='border-2 border-gray-200 p-2 w-28 rounded-xl'>
+					£{(price * quantity).toFixed(2)}
+				</div>
 			</div>
 		</div>
 	);
+};
+
+PriceQuantityTotal.defaultProps = {
+	price: 0,
+	qty: 0,
 };
 
 export default PriceQuantityTotal;

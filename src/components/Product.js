@@ -14,7 +14,7 @@ const Product = ({ id, name, description, price }) => {
 		// if user is logged in, run addToCart, else, advise them to login
 		if (user.id) {
 			// add the item to the redux cart
-			dispatch(addToCart({productId: id, price: price, qty: 1}));
+			dispatch(addToCart({ productId: id, name: name, price: price, qty: 1 }));
 		} else {
 			alert('Please login to create an order');
 		}
@@ -33,7 +33,7 @@ const Product = ({ id, name, description, price }) => {
 				</Link>
 				<div className='mt-2 text-gray-700'>{description}</div>
 				<div className='flex mt-auto'>
-					<div className='self-center font-medium text-lg text-gray-700'>{price}</div>
+					<div className='self-center font-medium text-lg text-gray-700'>£{price.toFixed(2)}</div>
 					<button
 						className='ml-auto cursor-pointer  rounded-xl px-4 py-1 font-medium text-gray-700 bg-gray-200 hover:bg-yellow-600 hover:text-gray-200'
 						onClick={handleAddToCart}

@@ -30,7 +30,7 @@ const ProductsScreen = () => {
 						id={product.id}
 						name={product.data().name}
 						description={product.data().description}
-						price={`£${product.data().price}`}
+						price={product.data().price}
 					/>
 				))}
 			</div>
