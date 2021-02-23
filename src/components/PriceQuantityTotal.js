@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { removeFromCart } from '../redux/cart/cartActions';
+import { addToCart, removeFromCart } from '../redux/cart/cartActions';
 
-const PriceQuantityTotal = ({ price, qty, id }) => {
+const PriceQuantityTotal = ({ price, qty, id, name }) => {
 	const dispatch = useDispatch();
 	const [quantity, setQuantity] = useState(qty);
 
 	function handleRemoveItem() {
 		dispatch(removeFromCart(id));
+	}
+
+	function handleAddItem() {
+		dispatch(addToCart({ productId: id, name, price, qty: 1 }));
 	}
 
 	return (
@@ -26,15 +30,10 @@ const PriceQuantityTotal = ({ price, qty, id }) => {
 					>
 						-
 					</button>
-					<input
-						className='w-14 my-2 text-center rounded-xl mx-2'
-						type='text'
-						value={quantity}
-						onChange={e => setQuantity(e.target.value)}
-					/>
+					<input className='w-14 my-2 text-center rounded-xl mx-2' type='text' value={qty} />
 					<button
 						className='w-8 my-2 cursor-pointer  rounded-xl font-medium text-gray-700 bg-gray-200 hover:bg-yellow-600 hover:text-gray-200'
-						onClick={() => setQuantity(quantity + 1)}
+						onClick={handleAddItem}
 					>
 						+
 					</button>
@@ -43,7 +42,7 @@ const PriceQuantityTotal = ({ price, qty, id }) => {
 			<div className='text-xs text-center'>
 				Total price
 				<div className='border-2 border-gray-200 p-2 w-28 rounded-xl'>
-					£{(price * quantity).toFixed(2)}
+					£{(price * qty).toFixed(2)}
 				</div>
 			</div>
 		</div>
