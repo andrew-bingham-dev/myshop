@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-const PriceQuantityTotal = ({ price, qty }) => {
+import { removeFromCart } from '../redux/cart/cartActions';
+
+const PriceQuantityTotal = ({ price, qty, id }) => {
+	const dispatch = useDispatch();
 	const [quantity, setQuantity] = useState(qty);
+
+	function handleRemoveItem() {
+		dispatch(removeFromCart(id));
+	}
 
 	return (
 		<div className='flex w-full justify-between mt-8'>
@@ -14,7 +22,7 @@ const PriceQuantityTotal = ({ price, qty }) => {
 				<div className='border-2 border-gray-200 rounded-xl px-2 items-center flex'>
 					<button
 						className='w-8 my-2 cursor-pointer rounded-xl font-medium text-gray-700 bg-gray-200 hover:bg-yellow-600 hover:text-gray-200'
-						onClick={() => setQuantity(quantity > 0 ? quantity - 1 : 0)}
+						onClick={handleRemoveItem}
 					>
 						-
 					</button>

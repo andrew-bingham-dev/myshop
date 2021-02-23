@@ -1,11 +1,11 @@
-import { CART_ADD_ITEM } from './cartConstants';
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from './cartConstants';
 
 const cartReducer = (state = [], action) => {
+	let updatedCart = [];
+	let itemFound = false;
+
 	switch (action.type) {
 		case CART_ADD_ITEM:
-			let updatedCart = [];
-			let itemFound = false;
-
 			// check cart is not empty
 			if (state.length != 0) {
 				// check if item already exists in the cart
@@ -16,7 +16,7 @@ const cartReducer = (state = [], action) => {
 						return { ...item, qty: item.qty + action.payload.qty };
 						// item does not match, so return it as it is
 					} else {
-						return item;
+						return { ...item };
 					}
 				});
 				// if cart not empty and item not found, add it
@@ -27,8 +27,25 @@ const cartReducer = (state = [], action) => {
 			} else {
 				updatedCart.push(action.payload);
 			}
-
 			return updatedCart;
+
+		case CART_REMOVE_ITEM:
+			updatedCart = state.map(item => {
+				if (item.productId === action.payload) {
+					if (item.qty > 0) {
+						console.log('return: ', { ...item, qty: item.qty - 1 });
+						return { ...item, qty: item.qty - 1 };
+					} else {
+						return item;
+					}
+				} else {
+					return item;
+				}
+			});
+
+			// remove any zero qty items
+			return updatedCart.filter(item => item.qty > 0);
+
 		default:
 			return state;
 	}

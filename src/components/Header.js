@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -7,19 +7,20 @@ import { userLogout } from '../redux/user/userActions';
 const Header = () => {
 	const user = useSelector(state => state.user);
 	const cart = useSelector(state => state.cart);
+	const [totalCartItems, setTotalCartItems] = useState(0);
 	const dispatch = useDispatch();
 
-	function itemsInCart(cart) {
+	useEffect(() => {
 		let totalItems = 0;
 		if (cart.length > 0) {
 			cart.forEach(item => {
 				totalItems += item.qty;
 			});
-			return totalItems;
+			setTotalCartItems(totalItems);
 		} else {
-			return 0;
+			setTotalCartItems(0);
 		}
-	}
+	}, [cart]);
 
 	function displayProductsOptions() {}
 
@@ -35,9 +36,10 @@ const Header = () => {
 				</Link>
 				<Link className='hover:no-underline hover:text-gray-100' to='/cart'>
 					Cart
-					{itemsInCart(cart) > 0 ? ` (${itemsInCart(cart)})` : ''}
+					{totalCartItems > 0 ? ` (${totalCartItems})` : ''}
 				</Link>
 				<button
+					className='hover:no-underline hover:text-gray-100'
 					onClick={() => {
 						dispatch(userLogout());
 					}}
