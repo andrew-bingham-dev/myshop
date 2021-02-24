@@ -69,7 +69,7 @@ const Header = () => {
 	return (
 		<>
 			<nav className='w-full bg-gray-700 text-gray-300 p-2 sticky'>
-				<div className='max-w-4xl flex justify-between items-center mx-auto px-4'>
+				<div className='max-w-7xl flex justify-between items-center mx-auto px-4'>
 					<div className='text-4xl my-auto pb-2 '>
 						<Link className='font-bold hover:no-underline hover:text-gray-100' to='/'>
 							MyShop

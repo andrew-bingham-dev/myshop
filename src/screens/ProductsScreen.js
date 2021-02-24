@@ -23,7 +23,7 @@ const ProductsScreen = () => {
 
 	return (
 		<>
-			<div className='mx-auto px-4 max-w-4xl grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+			<div className='mx-auto px-4 max-w-7xl grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>
 				{products.map(product => (
 					<Product
 						key={product.id}

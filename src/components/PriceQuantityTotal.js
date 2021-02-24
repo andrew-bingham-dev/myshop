@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { addToCart, removeFromCart } from '../redux/cart/cartActions';
 
 const PriceQuantityTotal = ({ price, qty, id, name }) => {
 	const dispatch = useDispatch();
-	const [quantity, setQuantity] = useState(qty);
 
 	function handleRemoveItem() {
 		dispatch(removeFromCart(id));
