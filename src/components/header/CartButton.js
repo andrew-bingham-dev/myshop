@@ -7,7 +7,7 @@ const CartButton = ({ items }) => {
 	}
 
 	return (
-		<Link className='p-4 hover:no-underline hover:text-gray-100' to='/cart'>
+		<Link className='text-gray-300 p-4 hover:no-underline hover:text-gray-100' to='/cart'>
 			Cart
 			{items > 0 ? ` (${items})` : ''}
 		</Link>
