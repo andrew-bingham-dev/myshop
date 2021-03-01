@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { auth } from './apis/firebase';
 import { userLogout } from './redux/user/userActions';
-import Header from './components/Header';
+import Header from './components/header/Header';
 import LoginScreen from './screens/LoginScreen';
 import ProductsScreen from './screens/ProductsScreen';
 import { USER_LOGIN_SUCCESS } from './redux/user/userConstants';

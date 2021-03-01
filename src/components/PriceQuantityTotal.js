@@ -15,23 +15,25 @@ const PriceQuantityTotal = ({ price, qty, id, name }) => {
 	}
 
 	return (
-		<div className='flex w-full justify-between mt-8'>
+		<div className='flex w-full justify-between mt-4 md:mt-8'>
 			<div className='text-xs text-center'>
 				Unit price
-				<div className='border-2 border-gray-200 p-2 w-28 rounded-xl'>£{price.toFixed(2)}</div>
+				<div className='border-2 border-gray-200 p-1 w-16 md:p-2 md:w-28 rounded-xl'>
+					£{price.toFixed(2)}
+				</div>
 			</div>
 			<div className='text-xs text-center'>
 				Select quantity
-				<div className='border-2 border-gray-200 rounded-xl px-2 items-center flex'>
+				<div className='border-2 border-gray-200 rounded-xl px-1 md:px-2 items-center flex'>
 					<button
-						className='w-8 my-2 cursor-pointer rounded-xl font-medium text-gray-700 bg-gray-200 hover:bg-yellow-600 hover:text-gray-200'
+						className='w-8 my-1 md:my-2 cursor-pointer rounded-xl font-medium text-gray-700 bg-gray-200 hover:bg-yellow-600 hover:text-gray-200'
 						onClick={handleRemoveItem}
 					>
 						-
 					</button>
-					<input className='w-14 my-2 text-center rounded-xl mx-2' type='text' value={qty} />
+					<input className='w-12 md:w-14 text-center rounded-xl mx-2' type='text' value={qty} />
 					<button
-						className='w-8 my-2 cursor-pointer  rounded-xl font-medium text-gray-700 bg-gray-200 hover:bg-yellow-600 hover:text-gray-200'
+						className='w-8 my-1 md:my-2 cursor-pointer  rounded-xl font-medium text-gray-700 bg-gray-200 hover:bg-yellow-600 hover:text-gray-200'
 						onClick={handleAddItem}
 					>
 						+
@@ -40,7 +42,7 @@ const PriceQuantityTotal = ({ price, qty, id, name }) => {
 			</div>
 			<div className='text-xs text-center'>
 				Total price
-				<div className='border-2 border-gray-200 p-2 w-28 rounded-xl'>
+				<div className='border-2 border-gray-200 p-1 w-16 md:p-2 md:w-28 rounded-xl'>
 					£{(price * qty).toFixed(2)}
 				</div>
 			</div>

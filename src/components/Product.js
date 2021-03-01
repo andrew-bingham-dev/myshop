@@ -22,7 +22,7 @@ const Product = ({ id, name, description, price }) => {
 
 	return (
 		<>
-			<div className='border-gray-300 bg-gray-100 shadow-sm h-full mt-4 p-2 rounded-md flex flex-col'>
+			<div className='border-gray-300 bg-gray-100 shadow-sm h-full mt-1 md:mt-4 p-2 rounded-md flex flex-col'>
 				<Link className='hover:no-underline' to={`/product/${id}`}>
 					<div
 						className='cursor-pointer font-bold text-lg text-gray-700 hover:text-yellow-600'

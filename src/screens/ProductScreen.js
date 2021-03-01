@@ -50,11 +50,15 @@ const ProductScreen = ({ match }) => {
 	}, []);
 
 	return (
-		<div className='mx-auto max-w-xl shadow p-10 rounded-xl mt-10 bg-gray-100'>
-			<h2 className='font-bold text-4xl text-gray-700 '>{productDetails.name}</h2>
-			<p className='text-lg mt-4'>{productDetails.description}</p>
+		<div className='mx-auto max-w-xl shadow p-4 mt-4 md:p-10 rounded-xl md:mt-10 bg-gray-100'>
+			<h2 className='font-bold text-2xl md:text-4xl text-gray-700 '>{productDetails.name}</h2>
+			<p className='md:text-lg mt-4'>{productDetails.description}</p>
 			<div className='flex flex-col mt-auto'>
-				<img className='mt-4 max-h-72 object-contain' src={productDetails.imageURL} alt={productDetails.name} />
+				<img
+					className='mt-4 max-h-72 object-contain'
+					src={productDetails.imageURL}
+					alt={productDetails.name}
+				/>
 				<div className='flex mt-8'>
 					<div className='self-center font-medium text-lg text-gray-700'>
 						£{productDetails?.price?.toFixed(2)}
